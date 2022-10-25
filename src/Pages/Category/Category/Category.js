@@ -1,15 +1,20 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import TutorialSummaryCard from '../../Shared/TutorialSummaryCard/TutorialSummaryCard';
 
 const Category = () => {
 
     //loading data
-    const tutorial = useLoaderData();
-    
+    const categoryTutorial = useLoaderData();
+
     return (
         <div>
-            
-            <h2>this is category: {tutorial.length}</h2>
+            {
+                categoryTutorial.map(tutorial => <TutorialSummaryCard
+                    key = {tutorial._id}
+                    tutorial = { tutorial}
+                ></TutorialSummaryCard>)
+            }
         </div>
     );
 };
