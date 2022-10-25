@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { FaGoogle, FaGooglePlusG, FaGithub } from 'react-icons/fa';
 
 const LeftSideNav = () => {
 
@@ -17,7 +18,7 @@ const LeftSideNav = () => {
     } ,[]);
     return (
         <div>
-            <h4>All Tutorials: {categories.length}</h4>
+            <h4 className='my-4'>All Tutorials: {categories.length}</h4>
             <div>
                 {
                     categories.map(category => <p key = {category.id}>
@@ -25,7 +26,13 @@ const LeftSideNav = () => {
                     </p>)
                 }
             </div>
-           
+            <div>
+                <ButtonGroup vertical>
+                    <Button className='mb-2' variant='outline-primary'><FaGooglePlusG></FaGooglePlusG> Login with Email</Button>
+                    <Button className='mb-2' variant='outline-primary'><FaGoogle></FaGoogle> Login with Google</Button>
+                    <Button className='mb-2' variant='outline-primary'><FaGithub></FaGithub> Login with GitHub</Button>
+                </ButtonGroup>
+            </div>
         </div>
     );
 };
