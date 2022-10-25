@@ -2,7 +2,9 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
+import './Header.css'
 
 const Header = () => {
     return (
@@ -17,7 +19,7 @@ const Header = () => {
                         alt=""
                     />
                 </Navbar.Brand>
-                <Navbar.Brand href="#home">Treat Tutorials</Navbar.Brand>
+                <Navbar.Brand><Link className='text-white fw-bold fs-3 txt' to = '/'>Treat Tutorials</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
