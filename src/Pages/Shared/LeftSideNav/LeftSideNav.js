@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './LeftSideNav.css';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGoogle, FaGooglePlusG, FaGithub } from 'react-icons/fa';
@@ -37,7 +38,9 @@ const LeftSideNav = () => {
             <div>
                 {
                     categories.map(category => <p key = {category.id}>
-                        <Link to = {`/category/${category.id}`}>{category.name}</Link>
+                        <Button className='tutorials'>
+                            <Link className="text-white tutorial-text" class to={`/category/${category.id}`}>{category.name}</Link>
+                        </Button>
                     </p>)
                 }
             </div>

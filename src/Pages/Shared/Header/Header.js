@@ -13,8 +13,15 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
 const Header = () => {
+
     //getting user info from context
-    const {user} = useContext(AuthContext);
+    const {user, logOut} = useContext(AuthContext);
+
+    const handelLogOut = () =>{
+        logOut()
+        .then(() => {})
+        .catch(error => console.error('error:', error))
+    }
     return (
         <Navbar collapseOnSelect className='mb-3' expand="lg" bg="dark" variant="dark">
             <Container>
@@ -38,19 +45,33 @@ const Header = () => {
                     <Nav>
                         
     {/* showing user info */}
-                        <Nav.Link eventKey={2} href="#memes">
-                            <OverlayTrigger overlay={<Tooltip>{user?.displayName}</Tooltip>}>
+                        <Nav.Link>
+                            <OverlayTrigger overlay={<Tooltip>
+                                {user?.displayName}
+                                </Tooltip>}>
                                 <span>
                                     {
-                                        user.photoURL ?
-                                            <Image style={{ height: '40px' }} roundedCircle src={user.photoURL}></Image>
+                                        user?.photoURL ?
+                                            <Image style={{ height: '47px' }} roundedCircle src={user.photoURL}></Image>
                                             : <FaUser></FaUser>
                                     }
                                 </span>
                             </OverlayTrigger>
+                            {
+                                user?.uid ?
+                                <> 
+                                        <Button className="ms-3" onClick={handelLogOut}>Log Out</Button>
+                                </>
+                                :
+                                <>
+                                    <Button className='ms-3'>
+                                            <Link className='text-white tutorial-text ' to='/login'>Login</Link>
+                                    </Button>
+                                    {/* <Link to = '/register'>Register</Link> */}
+                                </>
+                            }
                         </Nav.Link>
-
-                        <Nav.Link href="#deets"><Button>Login</Button></Nav.Link>
+                        {/* <Nav.Link href="#deets"><Button>Login</Button></Nav.Link> */}
                     </Nav>
                     {/* <div className='d-lg-none'>
                         <LeftSideNav></LeftSideNav>
