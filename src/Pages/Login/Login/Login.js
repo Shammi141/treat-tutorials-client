@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
@@ -13,6 +13,10 @@ const Login = () => {
     const [error, setError] = useState('');
     //for redirection
     const navigate = useNavigate();
+    //for setup previous user location
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handelSubmit = (event) =>{
         event.preventDefault();
@@ -24,7 +28,7 @@ const Login = () => {
             const user = result.user;
             form.reset();
             setError('');
-            navigate('/');
+            navigate(from, {replace: true});
             console.log(user);
         })
         .catch(error => {
