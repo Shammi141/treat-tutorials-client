@@ -8,7 +8,7 @@ const Category = () => {
     const categoryTutorial = useLoaderData();
 
     return (
-        <div>
+        <div className='mt-4'>
             {
                 categoryTutorial.map(tutorial => <TutorialSummaryCard
                     key = {tutorial._id}

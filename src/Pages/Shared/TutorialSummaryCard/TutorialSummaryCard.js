@@ -2,6 +2,7 @@ import React from 'react';
 import './TutorialSummaryCard.css'
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const TutorialSummaryCard = ({tutorial}) => {
 
@@ -12,14 +13,15 @@ const TutorialSummaryCard = ({tutorial}) => {
             <Card.Img className='img-height' variant="top" src={image_url} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <Card.Text>
+                <Card.Text className='mb-2'>
                     {
                     details.length > 150 ?
-                    <p>{details.slice(0, 150) + '...'} <Link to = {`/tutorial/${_id}`}>Read More</Link></p>
+                    <p>{details.slice(0, 150) + '...'} <Link  to = {`/tutorial/${_id}`}>Read More</Link></p>
                     :
                     <p>{details}</p>
                     }
                 </Card.Text>
+                    <Button variant="outline-success">Download</Button>
             </Card.Body>
         </Card>
     );

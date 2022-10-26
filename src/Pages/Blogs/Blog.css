@@ -1,0 +1,8 @@
+.blog{
+    border: 2px solid gray;
+    padding: 10px;
+    border-radius: 7px;
+}
+.blog:hover{
+    border: 2px solid rgb(200, 159, 238);
+}

@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import './Header.css'
 
 const Header = () => {
@@ -23,12 +22,11 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#courses">Tutorials</Nav.Link>
-                        <Nav.Link href="#blogs">Blogs</Nav.Link>
-                        <Nav.Link href="#faq">FAQ</Nav.Link>
+                        <Nav.Link><Link className='text-white txt' to ="/">Tutorials</Link></Nav.Link>
+                        <Nav.Link><Link className='text-white txt' to ="/blogs">Blogs</Link></Nav.Link>
+                        <Nav.Link><Link className='text-white txt' to ="/faq">FAQ</Link></Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
                             Dank memes
                         </Nav.Link>
