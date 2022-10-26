@@ -1,11 +1,20 @@
 import React from 'react';
+import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 import './Header.css'
+import { Image } from 'react-bootstrap';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const Header = () => {
+    //getting user info from context
+    const {user} = useContext(AuthContext);
     return (
         <Navbar collapseOnSelect className='mb-3' expand="lg" bg="dark" variant="dark">
             <Container>
@@ -27,9 +36,21 @@ const Header = () => {
                         <Nav.Link><Link className='text-white txt' to ="/faq">FAQ</Link></Nav.Link>
                     </Nav>
                     <Nav>
+                        
+    {/* showing user info */}
                         <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
+                            <OverlayTrigger overlay={<Tooltip>{user?.displayName}</Tooltip>}>
+                                <span>
+                                    {
+                                        user.photoURL ?
+                                            <Image style={{ height: '40px' }} roundedCircle src={user.photoURL}></Image>
+                                            : <FaUser></FaUser>
+                                    }
+                                </span>
+                            </OverlayTrigger>
                         </Nav.Link>
+
+                        <Nav.Link href="#deets"><Button>Login</Button></Nav.Link>
                     </Nav>
                     {/* <div className='d-lg-none'>
                         <LeftSideNav></LeftSideNav>

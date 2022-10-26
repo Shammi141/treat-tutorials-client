@@ -2,7 +2,6 @@ import React from 'react';
 import './TutorialSummaryCard.css'
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 
 const TutorialSummaryCard = ({tutorial}) => {
 
@@ -21,7 +20,7 @@ const TutorialSummaryCard = ({tutorial}) => {
                     <p>{details}</p>
                     }
                 </Card.Text>
-                    <Button variant="outline-success">Download</Button>
+                    
             </Card.Body>
         </Card>
     );

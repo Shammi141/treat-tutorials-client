@@ -4,6 +4,7 @@ import Blogs from "../../Pages/Blogs/Blogs";
 import Category from "../../Pages/Category/Category/Category";
 import FAQ from "../../Pages/FAQ/FAQ";
 import Home from "../../Pages/Home/Home/Home";
+import Premium from "../../Pages/Premium/Premium";
 import Tutorial from "../../Pages/Tutorial/Tutorial/Tutorial";
 
 export const routes = createBrowserRouter([
@@ -24,6 +25,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/tutorial/:id',
                 element: <Tutorial></Tutorial>,
+                loader: ({params}) => fetch(`http://localhost:5000/tutorial/${params.id}`)
+            },
+            {
+                path: '/tutorial/premium-checkout/:id',
+                element: <Premium></Premium>,
                 loader: ({params}) => fetch(`http://localhost:5000/tutorial/${params.id}`)
             },
             {
