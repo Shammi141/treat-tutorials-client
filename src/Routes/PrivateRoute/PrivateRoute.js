@@ -8,13 +8,13 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
 
     //managing loading time
-    if(loading){
+    if (loading) {
         return <h2 className='text-warning'>I am loading. Wait Please..!</h2>
     }
-
     if(!user){
         return <Navigate to= '/login' state = {{from: location}} replace></Navigate>
     }
+    
     return children;
 };
 

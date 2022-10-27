@@ -9,7 +9,6 @@ const Home = () => {
 
     return (
         <div>
-            <h2>home component: {allTutorial.length}</h2>
             {
                 allTutorial.map(tutorial => <TutorialSummaryCard 
                     key = {tutorial._id}

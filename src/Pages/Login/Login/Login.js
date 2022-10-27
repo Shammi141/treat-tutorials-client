@@ -35,7 +35,6 @@ const Login = () => {
             form.reset();
             setError('');
             navigate(from, {replace: true});
-            console.log(user);
         })
         .catch(error => {
             console.error('error: ', error)
@@ -49,6 +48,8 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate(from, { replace: true });
+
             })
             .catch(error => console.error('Error: ', error))
     }
@@ -58,6 +59,8 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                navigate(from, { replace: true });
+
             })
             .catch(error => console.error('Error: ', error))
     }

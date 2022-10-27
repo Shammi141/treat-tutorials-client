@@ -11,6 +11,7 @@ import { FaUser } from 'react-icons/fa';
 import { Image } from 'react-bootstrap';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Header = () => {
 
@@ -22,12 +23,13 @@ const Header = () => {
         .then(() => {})
         .catch(error => console.error('error:', error))
     }
+
     return (
         <Navbar collapseOnSelect className='mb-3' expand="lg" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand>
                     <img
-                        src="../../../../public/icon.png"
+                        src="https://thumbs.dreamstime.com/z/online-education-logo-design-template-course-learning-185528762.jpg"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
@@ -68,14 +70,14 @@ const Header = () => {
                                     <Button className='ms-3'>
                                             <Link className='text-white tutorial-text ' to='/login'>Login</Link>
                                     </Button>
-                                    {/* <Link to = '/register'>Register</Link> */}
                                 </>
                             }
+                            
                         </Nav.Link>
                     </Nav>
-                    {/* <div className='d-lg-none'>
+                    <div className='d-lg-none'>
                         <LeftSideNav></LeftSideNav>
-                    </div> */}
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

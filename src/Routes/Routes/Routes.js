@@ -18,24 +18,24 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/tutorial')
+                loader: () => fetch('https://treat-tutorials-server.vercel.app/tutorial')
             },
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({params}) => fetch(`https://treat-tutorials-server.vercel.app/category/${params.id}`)
             },
             {
                 path: '/tutorial/:id',
                 element: <Tutorial></Tutorial>,
-                loader: ({params}) => fetch(`http://localhost:5000/tutorial/${params.id}`)
+                loader: ({params}) => fetch(`https://treat-tutorials-server.vercel.app/tutorial/${params.id}`)
             },
             {
                 path: '/tutorial/premium-checkout/:id',
                 element: <PrivateRoute>
                     <Premium></Premium>
                 </PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/tutorial/${params.id}`)
+                loader: ({params}) => fetch(`https://treat-tutorials-server.vercel.app/tutorial/${params.id}`)
             },
             {
                 path: '/tutorial',
