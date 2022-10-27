@@ -1,12 +1,18 @@
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { providerLogin } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     
     const {signIn} = useContext(AuthContext);
     //for error
@@ -37,6 +43,25 @@ const Login = () => {
         })
     }
 
+    //google signIn process
+    const handelGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => console.error('Error: ', error))
+    }
+    //github signin process
+    const handelGithubSignIn = () => {
+        providerLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => console.error('Error: ', error))
+    }
+
     return (
         <Form onSubmit = {handelSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -52,11 +77,20 @@ const Login = () => {
             <Button variant="primary" type="submit">
                 Login
             </Button>
+            
             <Form.Text className="text-danger">
                 {error}
             </Form.Text>
-
+{/* rendering register page */}
             <p>Don't have account? Create account now <Link to ="/register">Register here</Link> </p>
+            <ButtonGroup vertical>
+                <Link>
+                    <Button onClick={handelGoogleSignIn} className='mb-2' variant='outline-primary'><FaGoogle></FaGoogle> Login with Google</Button>
+                </Link>
+                <Link>
+                    <Button onClick={handelGithubSignIn} className='mb-2' variant='outline-primary'><FaGithub></FaGithub> Login with GitHub</Button>
+                </Link>
+            </ButtonGroup>
         </Form>
     );
 };

@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
 const TutorialSummaryCard = ({tutorial}) => {
-
+    //getting data for tutorial
     const {title, _id, details, image_url} = tutorial;
 
         return (
@@ -23,6 +23,7 @@ const TutorialSummaryCard = ({tutorial}) => {
                     
             </Card.Body>
         </Card>
+            
     );
 };
 

@@ -57,12 +57,13 @@ export const routes = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>
             },
-            {
-                path: '*',
-                element: <div>Route is not Correct! Please correct the URL. <br />
-                </div>
-            }
+            
         ]
+    },
+    {
+        path: '*',
+        element: <div className="fs-5 mt-5 fw-bold">You got<span className="text-warning">404</span> route! Please correct the URL. <br />
+        </div>
     }
 
 ]) 

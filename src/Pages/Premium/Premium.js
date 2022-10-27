@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 
+//premium courses info
 const Premium = () => {
     const tutorialInfo = useLoaderData();
     const { title, details, image_url } = tutorialInfo;

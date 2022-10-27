@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import './LeftSideNav.css';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import { FaGoogle, FaGooglePlusG, FaGithub } from 'react-icons/fa';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const LeftSideNav = () => {
 
@@ -21,9 +21,12 @@ const LeftSideNav = () => {
         .then(data => setCategories(data))
     } ,[]);
 
-    //google signIn process
+    
     const {providerLogin} = useContext(AuthContext);
     const googleProvider  = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    //google signIn process
     const handelGoogleSignIn = () =>{
         providerLogin(googleProvider)
         .then(result => {
@@ -32,6 +35,16 @@ const LeftSideNav = () => {
         })
         .catch(error => console.error('Error: ', error))
     }
+
+    //github signin process
+    const handelGithubSignIn = () =>{
+        providerLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => console.error('Error: ', error))
+    }
     return (
         <div>
             <h4 className='my-4'>Find Your Tutorials</h4>
@@ -39,16 +52,20 @@ const LeftSideNav = () => {
                 {
                     categories.map(category => <p key = {category.id}>
                         <Button className='tutorials'>
-                            <Link className="text-white tutorial-text" class to={`/category/${category.id}`}>{category.name}</Link>
+                            <Link className="text-white text-decoration-none" class to={`/category/${category.id}`}>{category.name}</Link>
                         </Button>
                     </p>)
                 }
             </div>
             <div>
+        {/* for 3types of login button */}
                 <ButtonGroup vertical>
-                    <Button className='mb-2' variant='outline-primary'><FaGooglePlusG></FaGooglePlusG> Login with Email</Button>
-                    <Button onClick={handelGoogleSignIn} className='mb-2' variant='outline-primary'><FaGoogle></FaGoogle> Login with Google</Button>
-                    <Button className='mb-2' variant='outline-primary'><FaGithub></FaGithub> Login with GitHub</Button>
+                    <Link>
+                        <Button onClick={handelGoogleSignIn} className='mb-2' variant='outline-primary'><FaGoogle></FaGoogle> Login with Google</Button>
+                    </Link>
+                    <Link>
+                        <Button onClick={handelGithubSignIn} className='mb-2' variant='outline-primary'><FaGithub></FaGithub> Login with GitHub</Button>
+                    </Link>
                 </ButtonGroup>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.css';
 import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -7,7 +8,6 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { FaUser } from 'react-icons/fa';
-import './Header.css'
 import { Image } from 'react-bootstrap';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -25,7 +25,7 @@ const Header = () => {
     return (
         <Navbar collapseOnSelect className='mb-3' expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand>
                     <img
                         src="../../../../public/icon.png"
                         width="30"
@@ -42,10 +42,11 @@ const Header = () => {
                         <Nav.Link><Link className='text-white txt' to ="/blogs">Blogs</Link></Nav.Link>
                         <Nav.Link><Link className='text-white txt' to ="/faq">FAQ</Link></Nav.Link>
                     </Nav>
-                    <Nav>
-                        
+
+                    <Nav>                     
     {/* showing user info */}
                         <Nav.Link>
+                            {/* user name tooltips */}
                             <OverlayTrigger overlay={<Tooltip>
                                 {user?.displayName}
                                 </Tooltip>}>
@@ -71,7 +72,6 @@ const Header = () => {
                                 </>
                             }
                         </Nav.Link>
-                        {/* <Nav.Link href="#deets"><Button>Login</Button></Nav.Link> */}
                     </Nav>
                     {/* <div className='d-lg-none'>
                         <LeftSideNav></LeftSideNav>

@@ -7,6 +7,7 @@ const PrivateRoute = ({children}) => {
     const {user, loading} = useContext(AuthContext);
     const location = useLocation();
 
+    //managing loading time
     if(loading){
         return <h2 className='text-warning'>I am loading. Wait Please..!</h2>
     }

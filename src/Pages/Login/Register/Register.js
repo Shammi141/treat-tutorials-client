@@ -19,6 +19,7 @@ const Register = () => {
         const password = form.password.value;
         console.log(name, email, photoURL, password);
 
+        //for user creation 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
@@ -33,6 +34,7 @@ const Register = () => {
 
     }
     return (
+        //registration form
         <Form onSubmit = {handelSubmit} className='w-75 ms-5'>
             <h2 className='text-primary my-4 text-center'>Registration form</h2>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -58,6 +60,7 @@ const Register = () => {
             <Button variant="primary" type="submit">
                 Register
             </Button>
+{/* showing error message */}
             <Form.Text className="text-danger">
                 {error}
             </Form.Text>
