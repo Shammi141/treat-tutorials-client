@@ -7,11 +7,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { FaCloudSun } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
 import { Image } from 'react-bootstrap';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
+import logo from '../../../lg.jpg';
 
 const Header = () => {
 
@@ -24,12 +26,14 @@ const Header = () => {
         .catch(error => console.error('error:', error))
     }
 
+    
+
     return (
         <Navbar collapseOnSelect className='mb-3' expand="lg" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand>
                     <img
-                        src="https://thumbs.dreamstime.com/z/online-education-logo-design-template-course-learning-185528762.jpg"
+                        src={logo}
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
@@ -72,6 +76,7 @@ const Header = () => {
                                     </Button>
                                 </>
                             }
+                            <FaCloudSun className='fs-3 ms-3'></FaCloudSun>
                             
                         </Nav.Link>
                     </Nav>
